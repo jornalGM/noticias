@@ -9,12 +9,12 @@
 body{
     font-family: Arial, sans-serif;
     margin: 0;
-    background: #680000;
+    background: #000000;
 }
 
 header{
-    background: #8b0000;
-    color: rgb(82, 0, 0);
+    background: #000000;
+    color: rgb(0, 0, 0);
     text-align: center;
     padding: 20px;
 }
@@ -23,7 +23,7 @@ header{
     width: 95%;
     max-width: 960px;
     margin: 18px auto;
-    background: rgb(70, 0, 0);
+    background: rgb(0, 0, 0);
     padding: 16px;
     border-radius: 6px;
 }
@@ -45,6 +45,20 @@ img{
 p{
     line-height: 1.8;
     font-size: 18px;
+}
+
+@media(max-width: 768px){
+    .container{
+        width: 98%;
+        padding: 12px;
+        margin: 10px auto;
+    }
+    img{
+        height: 300px;
+    }
+    p{
+        font-size: 16px;
+    }
 }
 </style>
 </head>
@@ -164,7 +178,7 @@ header{
 img{
     display: block;
     width: 100%;
-    height: px;
+    height: 300px;
     object-fit: cover;
     border-radius: 6px;
     object-position: center top;
@@ -178,6 +192,20 @@ img{
 p{
     line-height: 1.8;
     font-size: 18px;
+}
+
+@media(max-width: 768px){
+    .container{
+        width: 98%;
+        padding: 12px;
+        margin: 10px auto;
+    }
+    img{
+        height: 280px;
+    }
+    p{
+        font-size: 16px;
+    }
 }
 </style>
 </body>
