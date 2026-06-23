@@ -1,11 +1,141 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Esportes - Jornal GM</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Arial, sans-serif;
+    background:#770000;
+    color:#333;
+}
+
+header{
+    background:#01060c;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+header h1{
+    font-size:2.2rem;
+}
+
+.container{
+    max-width:1000px;
+    margin:30px auto;
+    padding:0 20px;
+}
+
+.card{
+    background:white;
+    margin:30px auto 35px;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 4px 12px rgba(0,0,0,0.1);
+    width: 80%;
+    max-width: 100%;
+}
+
+.card img{
+    width:100%;
+    display:block;
+    height: auto;
+}
+
+.card-content{
+    padding:20px;
+}
+
+.card h2{
+    color:#000000;
+    margin-bottom:10px;
+}
+
+.card p{
+    line-height:1.7;
+}
+
+footer{
+    background:#000000;
+    color:white;
+    text-align:center;
+    padding:15px;
+    margin-top:30px;
+}
+
+@media(max-width:768px){
+    .card{ width:100%; margin:20px 0; }
+    .card img{ width:100%; }
+}
+</style>
+
 </head>
 <body>
-    
+
+<header>
+    <h1>Jornal GM - Esportes</h1>
+    <p>Destaques do esporte escolar</p>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <img src="https://i.ibb.co/ksqc9CjX/Captura-de-tela-2026-06-22-200615.png" 
+ alt="Basquete Campeão">
+
+        <div class="card-content">
+            <h2>🏆 Basquete do Colégio Elizângela é Campeão Estadual</h2>
+            <p>
+                O time masculino de basquete do Colégio Elizângela conquistou o título
+                de Campeão Estadual após uma excelente campanha. A equipe demonstrou
+                talento, disciplina e união dentro das quadras, garantindo mais uma
+                importante conquista para a escola e para o esporte tocantinense.
+            </p>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://i.ibb.co/zhKMVH01/Captura-de-tela-2026-06-22-200745.png" 
+ alt="JUBs Goiânia">
+        <div class="card-content">
+            <h2>🏀 Equipe representa o Tocantins no JUBs em Goiânia</h2>
+            <p>
+                Após a conquista estadual, os atletas viajaram para Goiânia para disputar
+                os Jogos Universitários Brasileiros (JUBs), representando o estado do
+                Tocantins. Competindo contra equipes de diversas regiões do país, o grupo
+                alcançou a excelente 6ª colocação na serie prata e em 14ª na colocação geral, levando o nome da escola e do
+                estado para uma das maiores competições esportivas estudantis do Brasil.
+            </p>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://i.ibb.co/Q3nyfFnR/Chat-GPT-Image-22-de-jun-de-2026-20-25-10.png" alt="Equipe Feminina Campeã">
+        <div class="card-content">
+            <h2>🥇 Meninas conquistam o Campeonato Escolar Municipal</h2>
+            <p>
+                A equipe feminina do Colégio Elizângela também brilhou nas quadras.
+                As atletas conquistaram o título do Campeonato Escolar Municipal após
+                uma campanha marcada por dedicação e grandes atuações. A conquista reforça
+                a força do esporte feminino e o destaque da instituição nas competições escolares.
+            </p>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    © 2026 Jornal GM - Todos os direitos reservados.
+</footer>
+
 </body>
 </html>
