@@ -23,7 +23,7 @@ body {
 
 }
 
-/* Barra do topo - Identidade Visual */
+
 header {
     background-color: #000000;
     color: white;
@@ -59,7 +59,7 @@ header {
     white-space: nowrap;
 }
 
-/* Container Principal das Notícias */
+
 .container-portal {
     max-width: 1200px;
     margin: 20px auto;
@@ -68,14 +68,13 @@ header {
     grid-template-columns: 2fr 1fr;
     gap: 20px;
 }
-
 @media (max-width: 768px) {
     .container-portal {
         grid-template-columns: 1fr;
     }
 }
 
-/* Box Padrão de Matéria */
+
 .item-noticia {
     background: #ffffff;
     border-radius: 4px;
@@ -111,7 +110,6 @@ header {
     display: block;
 }
 
-/* Textos Sobrepostos (Estilo G1) */
 .info-sobreposta {
     position: absolute;
     bottom: 0;
@@ -154,7 +152,7 @@ header {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Manchete Principal (Esquerda) */
+
 .manchete-principal {
     height: 480px;
 }
@@ -169,7 +167,7 @@ header {
     font-weight: bold;
 }
 
-/* Bloco Lateral (Direita) */
+
 .coluna-lateral {
     display: flex;
     flex-direction: column;
@@ -205,7 +203,7 @@ header {
     margin-top: 5px;
     display: block;
 }
-/* MENU */
+
 .menu {
     position: absolute;
     right: 20px;
@@ -263,7 +261,7 @@ header {
     cursor: pointer;
     margin-right: 0;
 }
-/*celular*/
+/* desenvolvimento paracelular*/
 @media(max-width:768px){
     header {
         flex-wrap: wrap;
@@ -364,10 +362,9 @@ header {
     <button class="menu-toggle" onclick="abrirMenu()">☰</button>
 
     <ul id="menuLista">
-        <li><a href="index.html">🏠Início</a></li>
-        <li><a href="esportes.html">⚽Esportes</a></li>
-        <li><a href="eventos.html">📅Eventos</a></li>
-        <li><a href="entrevistas.html">🎤Entrevistas</a></li>
+        <li><a href="esportes.html">esportes</a></li>
+        <li><a href="eventos.html">eventos</a></li>
+        >
     </ul>
 </nav>
 
