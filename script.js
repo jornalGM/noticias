@@ -33,15 +33,9 @@ MENU MOBILE
 const menuBtn = document.querySelector(".menu-mobile");
 const menu = document.querySelector("nav");
 
-if(menuBtn){
+if(menuBtn && menu){
 
-    menuBtn.addEventListener("click", () => {
-
-        menu.classList.toggle("ativo");
-
-        menuBtn.classList.toggle("ativo");
-
-    });
+    menuBtn.setAttribute("aria-expanded", "false");
 
 }
 
@@ -564,19 +558,58 @@ MENU MOBILE
 const menuMobile = document.querySelector(".menu-mobile");
 const menuNav = document.querySelector("nav");
 
-if(menuMobile){
+if(menuMobile && menuNav){
 
-menuMobile.addEventListener("click",()=>{
+menuMobile.addEventListener("click",(event)=>{
 
-    menuNav.classList.toggle("ativo");
+    event.stopPropagation();
 
-    if(menuNav.classList.contains("ativo")){
+    const abrir = !menuNav.classList.contains("ativo");
 
-        menuNav.style.right="0";
+    menuNav.classList.toggle("ativo", abrir);
 
-    }else{
+    menuMobile.classList.toggle("ativo", abrir);
 
-        menuNav.style.right="-100%";
+    menuNav.style.right = abrir ? "0" : "-100%";
+
+    menuMobile.setAttribute("aria-expanded", String(abrir));
+
+});
+
+
+document.addEventListener("click",(event)=>{
+
+    if(window.innerWidth <= 992 && menuNav.classList.contains("ativo") &&
+
+        !menuNav.contains(event.target) && !menuMobile.contains(event.target)){
+
+        menuNav.classList.remove("ativo");
+
+        menuMobile.classList.remove("ativo");
+
+        menuNav.style.right = "-100%";
+
+        menuMobile.setAttribute("aria-expanded", "false");
+
+    }
+
+});
+
+window.addEventListener("resize",()=>{
+
+    if(window.innerWidth > 992){
+
+        menuNav.classList.remove("ativo");
+
+        menuMobile.classList.remove("ativo");
+
+        menuNav.style.right = "";
+
+        menuMobile.setAttribute("aria-expanded", "false");
+
+    }else if(!menuNav.classList.contains("ativo")){
+
+        menuNav.style.right = "-100%";
 
     }
 
@@ -761,6 +794,18 @@ btn.style.transform="scale(.95)";
 });
 
 btn.addEventListener("mouseup",()=>{
+
+btn.style.transform="scale(1)";
+
+});
+
+btn.addEventListener("touchstart",()=>{
+
+btn.style.transform="scale(.95)";
+
+},{passive:true});
+
+btn.addEventListener("touchend",()=>{
 
 btn.style.transform="scale(1)";
 

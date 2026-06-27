@@ -28,6 +28,16 @@ body{
 
     overflow-x:hidden;
 
+    touch-action:manipulation;
+
+}
+
+a,
+button,
+input{
+
+    -webkit-tap-highlight-color:transparent;
+
 }
 
 /*=========================
@@ -1806,7 +1816,51 @@ padding:15px 5%;
 
 nav{
 
-display:none;
+position:fixed;
+
+top:0;
+
+right:-100%;
+
+width:min(85vw, 320px);
+
+height:100vh;
+
+background:rgba(17,17,17,.98);
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+padding:24px;
+
+transition:right .3s ease;
+
+z-index:1000;
+
+}
+
+nav ul{
+
+flex-direction:column;
+
+align-items:center;
+
+gap:24px;
+
+}
+
+nav a{
+
+font-size:18px;
+
+}
+
+nav.ativo{
+
+right:0;
 
 }
 
@@ -1824,13 +1878,19 @@ align-items:center;
 
 height:90vh;
 
+min-height:620px;
+
 }
 
 .texto{
 
-left:5%;
+left:50%;
+
+transform:translate(-50%,-50%);
 
 max-width:90%;
+
+text-align:center;
 
 }
 
@@ -1880,17 +1940,21 @@ header{
 
 top:0;
 
+padding:12px 4%;
+
 }
 
 .hero{
 
 height:80vh;
 
+min-height:560px;
+
 }
 
 .logo img{
 
-height:50px;
+height:46px;
 
 }
 
@@ -1908,23 +1972,35 @@ left:50%;
 
 transform:translate(-50%,-50%);
 
+max-width:100%;
+
+padding:0 16px;
+
 }
 
 .texto h1{
 
-font-size:34px;
+font-size:30px;
+
+line-height:1.2;
 
 }
 
 .texto p{
 
-font-size:16px;
+font-size:15px;
+
+margin-bottom:24px;
 
 }
 
 .btn{
 
-padding:14px 28px;
+width:100%;
+
+justify-content:center;
+
+padding:14px 20px;
 
 }
 
@@ -1960,25 +2036,50 @@ justify-content:center;
 
 }
 
+.categoria-card,
+.card,
+.conteudo{
+
+padding:20px;
+
+}
+
 }
 
 @media(max-width:480px){
 
 .texto h1{
 
-font-size:28px;
+font-size:24px;
 
 }
 
 .texto p{
 
-font-size:15px;
+font-size:14px;
+
+}
+
+.logo img{
+
+height:40px;
+
+}
+
+.dark-mode,
+.menu-mobile{
+
+width:42px;
+
+height:42px;
+
+font-size:16px;
 
 }
 
 .categoria-card{
 
-padding:25px;
+padding:22px;
 
 }
 
@@ -2003,6 +2104,24 @@ width:100%;
 .form-news button{
 
 width:100%;
+
+}
+
+.indicadores span{
+
+width:12px;
+
+height:12px;
+
+}
+
+button:active,
+.btn:active,
+.categoria-card:active,
+nav a:active,
+.social a:active{
+
+transform:scale(.97);
 
 }
 
