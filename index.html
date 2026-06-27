@@ -1,440 +1,846 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>jornal eli</title>
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
-html {
-    scroll-behavior: smooth;
-}
+<title>Jornal GM</title>
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #660701;
-    color: #333;
+<meta name="description" content="Portal de Notícias Jornal GM">
 
-}
+<link rel="stylesheet" href="style.css">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
 
-header {
-    background-color: #000000;
-    color: white;
-    padding: 12px 20px;
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: bold;
-    
-}
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-.logo-g1 {
-    font-size: 40px;
-    font-weight: bold;
-}
-.imagem-logo {
-    height: 65px; 
-    width: auto;  
-    object-fit: contain;
-    border-radius: 4px;
-}
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-
-.regiao {
-    font-size: 20px;
-    letter-spacing: 1px;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    white-space: nowrap;
-}
-
-
-.container-portal {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 0 15px;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 20px;
-}
-@media (max-width: 768px) {
-    .container-portal {
-        grid-template-columns: 1fr;
-    }
-}
-
-
-.item-noticia {
-    background: #ffffff;
-    border-radius: 4px;
-    overflow: hidden;
-    position: relative;
-    cursor: pointer;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-    opacity: 0;
-    transform: translateY(12px);
-    animation: fadeUp 0.6s ease forwards;
-}
-
-.item-noticia:nth-child(1) { animation-delay: 0s; }
-.item-noticia:nth-child(2) { animation-delay: 0.08s; }
-.item-noticia:nth-child(3) { animation-delay: 0.16s; }
-.item-noticia:nth-child(4) { animation-delay: 0.24s; }
-
-.item-noticia:hover {
-    transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.18);
-}
-
-.item-noticia a {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-}
-
-.item-noticia img {
-    width: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.info-sobreposta {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
-    color: white;
-    padding: 20px;
-    transition: transform 0.4s ease, opacity 0.4s ease;
-    transform: translateY(8px);
-    opacity: 0.96;
-}
-
-.item-noticia:hover .info-sobreposta {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-.saiba-mais {
-    display: inline-block;
-    margin-top: 14px;
-    padding: 10px 16px;
-    border-radius: 24px;
-    border: 1px solid rgba(255,255,255,0.85);
-    background: rgba(255,255,255,0.12);
-    color: #fff;
-    font-weight: 700;
-    font-size: 14px;
-    letter-spacing: 0.02em;
-    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.item-noticia:hover .saiba-mais {
-    transform: translateY(-2px);
-    background: rgba(255,255,255,0.22);
-    box-shadow: 0 10px 24px rgba(0,0,0,0.18);
-}
-
-@keyframes fadeUp {
-    to { opacity: 1; transform: translateY(0); }
-}
-
-
-.manchete-principal {
-    height: 480px;
-}
-
-.manchete-principal img {
-    height: 100%;
-}
-
-.manchete-principal h2 {
-    font-size: 28px;
-    line-height: 1.2;
-    font-weight: bold;
-}
-
-
-.coluna-lateral {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.noticia-lateral {
-    height: 230px;
-}
-
-.noticia-lateral img {
-    height: 100%;
-}
-
-.noticia-lateral h3 {
-    font-size: 16px;
-    line-height: 1.3;
-    font-weight: bold;
-}
-
-.tag-noticia {
-    font-size: 11px;
-    text-transform: uppercase;
-    font-weight: bold;
-    color: #ffd700;
-    margin-bottom: 4px;
-    display: block;
-}
-
-.data-noticia {
-    font-size: 12px;
-    color: #ccc;
-    margin-top: 5px;
-    display: block;
-}
-
-.menu {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    align-items: center;
-    border-radius: 50px;
-    margin-left: 0;
-    z-index: 1000;
-}
-
-.menu ul {
-    list-style: none;
-    position: absolute;
-    top: calc(100% + 8px);
-    right: 0;
-    left: auto;
-    min-width: 220px;
-    width: max-content;
-    background: rgba(0, 0, 0, 0.92);
-    backdrop-filter: blur(10px);
-    border-radius: 35px;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease;
-    z-index: 999;
-}
-
-.menu ul.ativo {
-    max-height: 300px;
-    width: auto;
-}
-
-.menu li {
-    border-top: 1px solid #333;
-    width:100%;
-}
-
-.menu li a {
-    display: block;
-    padding: 18px;
-    color: white;
-    text-decoration: none;
-    text-align: center;
-    font-weight: bold;
-    white-space: normal;
-}
-
-.menu-toggle {
-    background: transparent;
-    color: white;
-    border: none;
-    font-size: 35px;
-    cursor: pointer;
-    margin-right: 0;
-}
-/* desenvolvimento paracelular*/
-@media(max-width:768px){
-    header {
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: space-between;
-        gap: 12px;
-    }
-    .bloco-logo img {
-        max-width: 90px;
-    }
-    .regiao {
-        position: static;
-        transform: none;
-        flex: 1 1 auto;
-        min-width: 0;
-        text-align: center;
-    }
-    .menu{
-        position: static;
-        transform: none;
-        width: auto;
-        order: 2;
-        align-self: center;
-
-    }
-    .menu-toggle{
-        width: auto;
-        text-align: left;
-        padding: 12px 0;
-    }
-    .menu ul {
-        position: absolute;
-        top: 100%;
-        right: 0;
-        left: auto;
-        transform: none;
-        width: 220px;
-        background: #111;
-    }
-    .menu ul.ativo {
-        max-height: 300px;
-    }
-    .menu li {
-        border-top: 1px solid #333;
-        width: 100%;
-    }
-    .menu li a {
-        text-align: left;
-        white-space: normal;
-        padding: 10px 18px;
-    }
-    .menu a{
-        font-size: 18px;
-    }
-    .logo{
-        font-size: 24px;
-    }
-}
-
-.secao-menu {
-    max-width: 1200px;
-    margin: 30px auto;
-    padding: 24px 18px;
-    background: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    color: #222;
-}
-
-.secao-menu h2 {
-    margin-bottom: 12px;
-    font-size: 28px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-.secao-menu p {
-    font-size: 16px;
-    line-height: 1.75;
-    color: #444;
-}
-
-</style>
 </head>
+
 <body>
 
-<header id="inicio">
 
-    <div class="bloco-logo">
+   
 
-        <img src="https://i.ibb.co/5W3DzTd3/Whats-App-Image-2026-06-16-at-22-41-53.jpg" alt="Logo Jornal GM" class="imagem-logo">
+<!-- ===========================
+BARRA SUPERIOR
+=========================== -->
 
-    </div>
+<div class="topbar">
 
-    <div class="regiao">JORNAL GM</div>
+<div class="ultimas">
 
-<nav class="menu">
-    <button class="menu-toggle" onclick="abrirMenu()">☰</button>
+<strong>ÚLTIMAS:</strong>
 
-    <ul id="menuLista">
-        <li><a href="esportes.html">esportes</a></li>
-        <li><a href="eventos.html">eventos</a></li>
-        >
-    </ul>
+<div class="ticker">
+
+<span>
+Aprova Brasil • Agrotins • Literart • Projetos Integradores • Esportes • Eventos • Cultura
+</span>
+
+</div>
+
+</div>
+
+<div class="social">
+
+<a href="#"><i class="fab fa-instagram"></i></a>
+
+<a href="#"><i class="fab fa-facebook"></i></a>
+
+<a href="#"><i class="fab fa-youtube"></i></a>
+
+</div>
+
+</div>
+
+<!-- ===========================
+HEADER
+=========================== -->
+
+<header id="header">
+
+<div class="logo">
+
+<a href="index.html">
+
+<img src="https://i.ibb.co/B2XfFgdS/Captura-de-tela-2026-06-27-152629.png" alt="Jornal GM">
+
+</a>
+
+</div>
+
+<nav id="menu">
+
+<ul>
+
+<li><a href="index.html">Início</a></li>
+
+<li><a href="eventos.html">Eventos</a></li>
+
+<li><a href="esportes.html">Esportes</a></li>
+
+<li><a href="artigos.html">Artigos</a></li>
+
+<li><a href="contato.html">Contato</a></li>
+
+</ul>
+
 </nav>
+
+<div class="acoes">
+
+<div class="pesquisa">
+
+<input
+type="text"
+id="pesquisa"
+placeholder="Pesquisar notícias...">
+
+<button>
+
+<i class="fas fa-search"></i>
+
+</button>
+
+</div>
+
+<button class="dark-mode">
+
+<i class="fas fa-moon"></i>
+
+</button>
+
+<button class="menu-mobile">
+
+<i class="fas fa-bars"></i>
+
+</button>
+
+</div>
 
 </header>
 
-<main class="container-portal">
+<!-- ===========================
+HERO
+=========================== -->
 
-    <article class="item-noticia manchete-principal">
-        <a href="#" onclick="location.href='noticia1.html'">
-            <img src="https://i.ibb.co/1t34zrM0/Captura-de-tela-2026-06-16-203844.png" alt="Fauna Tocantins">
-            <div class="info-sobreposta">
-                <h2>alunos realizam a aprova brasil de matematica</h2>
-                <span class="data-noticia">16/06/2026</span>
-                <span class="saiba-mais">Saiba mais...</span>
-            </div>
-        </a>
-    </article>
+<section class="hero">
 
-    <div class="coluna-lateral">
+<div class="hero-slider">
 
-        <article class="item-noticia noticia-lateral">
-            <a href="noticia2.html" target="_blank">
-                <img src="https://i.ibb.co/5hDNK5HX/Captura-de-tela-2026-06-16-212049.png" alt="Estudantes na Agrotins">
-                <div class="info-sobreposta">
-                    <span class="tag-noticia">Educação e Campo</span>
-                    <h3 style ="color: rgb(255, 255, 255);">Alunos realizam visita pedagógica para conhecer inovações tecnológicas na Agrotins</h3>
-                    <span class="data-noticia">12/05/2026</span>
-                    <span class="saiba-mais">Saiba mais...</span>
-                </div>
-            </a>
-        </article>
+<div class="slide ativo">
 
-        <article class="item-noticia noticia-lateral">
-            <a href="noticia3.html" target="_blank">
-                <img src="https://i.ibb.co/B2mHtD1n/Captura-de-tela-2026-06-16-211802.png" alt="Dia do Literart">
-                <div class="info-sobreposta">
-                    <span class="tag-noticia">Cultura Escolar</span>
-                    <h3>Dia do Literart: Escola promove evento focado em expressões artísticas e produções literárias</h3>
-                    <span class="data-noticia">22/05/2026</span>
-                    <span class="saiba-mais">Saiba mais...</span>
-                </div>
-            </a>
-        </article>
+<img src="https://i.ibb.co/B2XfFgdS/Captura-de-tela-2026-06-27-152629.png" alt="Banner">
 
-    </div>
+<div class="overlay"></div>
 
-</main>
-<script>
-function abrirMenu() {
-    document.getElementById("menuLista").classList.toggle("ativo");
-}
+<div class="texto">
 
-document.querySelectorAll('.menu ul a').forEach(function(link) {
-    link.addEventListener('click', function() {
-        document.getElementById('menuLista').classList.remove('ativo');
-    });
-});
-</script>
+<span class="categoria">
 
+DESTAQUE
 
+</span>
 
+<h1>
 
+As principais notícias da escola em um só lugar
 
+</h1>
 
+<p>
 
+Informação, educação, cultura e eventos em um portal irado.
 
+</p>
 
+<a href="#noticias" class="btn">
 
+Explorar Notícias
 
+</a>
 
+</div>
 
+</div>
 
+<div class="slide">
 
+<img src="https://i.ibb.co/wN4r2MhN/Captura-de-tela-2026-06-16-220647.png" alt="Banner">
+
+<div class="overlay"></div>
+
+<div class="texto">
+
+<span class="categoria">
+
+EVENTOS
+
+</span>
+
+<h1>
+
+Acompanhe tudo que acontece na escola
+
+</h1>
+
+<p>
+
+Cobertura completa de eventos, projetos e atividades.
+
+</p>
+
+<a href="#noticias" class="btn">
+
+Ver Notícias
+
+</a>
+
+</div>
+
+</div>
+
+<div class="slide">
+
+<img src="img/banner/banner3.jpg" alt="Banner">
+
+<div class="overlay"></div>
+
+<div class="texto">
+
+<span class="categoria">
+
+ESPORTES
+
+</span>
+
+<h1>
+
+Competições, campeonatos e conquistas
+
+</h1>
+
+<p>
+
+Tudo sobre o esporte escolar em um só lugar.
+
+</p>
+
+<a href="#noticias" class="btn">
+
+Saiba Mais
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="indicadores">
+
+<span class="ativo"></span>
+
+<span></span>
+
+<span></span>
+
+</div>
+
+</section>
+
+<!-- ===========================
+CATEGORIAS
+=========================== -->
+
+<section class="categorias">
+
+<div class="categoria-card">
+
+<i class="fas fa-school"></i>
+
+<h3>Educação</h3>
+
+</div>
+
+<div class="categoria-card">
+
+<i class="fas fa-calendar-days"></i>
+
+<h3>Eventos</h3>
+
+</div>
+
+<div class="categoria-card">
+
+<i class="fas fa-futbol"></i>
+
+<h3>Esportes</h3>
+
+</div>
+
+<div class="categoria-card">
+
+<i class="fas fa-book-open"></i>
+
+<h3>Artigos</h3>
+
+</div>
+
+</section>
+
+<!-- ===========================
+DESTAQUES
+(A próxima parte continua daqui)
+=========================== -->
+```
+<!-- ===========================
+DESTAQUES
+=========================== -->
+
+<section class="destaques" id="noticias">
+
+<div class="titulo-secao">
+
+<span>DESTAQUES</span>
+
+<h2>Notícias em Destaque</h2>
+
+<p>Confira os principais acontecimentos da semana.</p>
+
+</div>
+
+<div class="grid-destaques">
+
+<article class="card esquerda">
+
+<div class="imagem">
+
+<img src="img/noticias/aprova-brasil.jpg" alt="Aprova Brasil">
+
+<span class="tag">Educação</span>
+
+</div>
+
+<div class="conteudo">
+
+<h3>Aprova Brasil impulsiona aprendizado dos estudantes</h3>
+
+<p>
+Projeto reforça o desenvolvimento dos alunos e melhora os resultados nas avaliações.
+</p>
+
+<a href="noticia-aprova.html" class="ler">
+Ler notícia
+<i class="fas fa-arrow-right"></i>
+</a>
+
+</div>
+
+</article>
+
+<article class="card direita">
+
+<div class="imagem">
+
+<img src="img/noticias/agrotins.jpg" alt="Agrotins">
+
+<span class="tag">Evento</span>
+
+</div>
+
+<div class="conteudo">
+
+<h3>Alunos participam da Agrotins 2026</h3>
+
+<p>
+A visita proporcionou contato com tecnologia, inovação e agronegócio.
+</p>
+
+<a href="noticia-agrotins.html" class="ler">
+Ler notícia
+<i class="fas fa-arrow-right"></i>
+</a>
+
+</div>
+
+</article>
+
+<article class="card esquerda">
+
+<div class="imagem">
+
+<img src="img/noticias/literart.jpg" alt="Literart">
+
+<span class="tag">Cultura</span>
+
+</div>
+
+<div class="conteudo">
+
+<h3>Literart reúne apresentações e muita criatividade</h3>
+
+<p>
+O evento valorizou literatura, música e produções artísticas dos estudantes.
+</p>
+
+<a href="noticia-literart.html" class="ler">
+Ler notícia
+<i class="fas fa-arrow-right"></i>
+</a>
+
+</div>
+
+</article>
+
+</div>
+
+</section>
+
+<!-- ===========================
+ÚLTIMAS NOTÍCIAS
+=========================== -->
+
+<section class="ultimas-noticias">
+
+<div class="titulo-secao">
+
+<span>ÚLTIMAS</span>
+
+<h2>Últimas Notícias</h2>
+
+<p>Tudo o que aconteceu recentemente.</p>
+
+</div>
+
+<div class="lista-noticias">
+
+<article class="noticia esquerda">
+
+<img src="img/noticias/noticia1.jpg">
+
+<div>
+
+<span class="categoria">
+Projetos
+</span>
+
+<h3>
+Projetos Integradores movimentam a escola
+</h3>
+
+<p>
+Diversas turmas apresentaram soluções inovadoras em várias áreas.
+</p>
+
+<a href="#">
+Ler mais
+</a>
+
+</div>
+
+</article>
+
+<article class="noticia direita">
+
+<img src="img/noticias/noticia2.jpg">
+
+<div>
+
+<span class="categoria">
+Esportes
+</span>
+
+<h3>
+Equipe conquista medalhas em competição regional
+</h3>
+
+<p>
+Os estudantes conquistaram excelentes resultados representando a escola.
+</p>
+
+<a href="#">
+Ler mais
+</a>
+
+</div>
+
+</article>
+
+<article class="noticia esquerda">
+
+<img src="img/noticias/noticia3.jpg">
+
+<div>
+
+<span class="categoria">
+Tecnologia
+</span>
+
+<h3>
+Laboratório recebe novos computadores
+</h3>
+
+<p>
+Novos equipamentos vão ampliar as atividades tecnológicas da escola.
+</p>
+
+<a href="#">
+Ler mais
+</a>
+
+</div>
+
+</article>
+
+<article class="noticia direita">
+
+<img src="img/noticias/noticia4.jpg">
+
+<div>
+
+<span class="categoria">
+Educação
+</span>
+
+<h3>
+Professores desenvolvem novas metodologias
+</h3>
+
+<p>
+Aulas mais dinâmicas e interativas passam a fazer parte da rotina escolar.
+</p>
+
+<a href="#">
+Ler mais
+</a>
+
+</div>
+
+</article>
+
+</div>
+
+</section>
+
+<!-- ===========================
+BANNER
+=========================== -->
+
+<section class="banner-meio">
+
+<div class="overlay"></div>
+
+<div class="banner-conteudo">
+
+<span>JORNAL GM</span>
+
+<h2>
+
+Informação, educação e conhecimento todos os dias.
+
+</h2>
+
+<p>
+
+Nosso compromisso é manter a comunidade escolar sempre informada.
+
+</p>
+
+<a href="#">
+
+Conheça nosso trabalho
+
+</a>
+
+</div>
+
+</section>
+
+<!-- ===========================
+ESTATÍSTICAS
+=========================== -->
+
+<section class="estatisticas">
+
+<div class="numero">
+
+<h2>250+</h2>
+
+<p>Notícias publicadas</p>
+
+</div>
+
+<div class="numero">
+
+<h2>20K</h2>
+
+<p>Leitores</p>
+
+</div>
+
+<div class="numero">
+
+<h2>120+</h2>
+
+<p>Eventos cobertos</p>
+
+</div>
+
+<div class="numero">
+
+<h2>100%</h2>
+
+<p>Compromisso com a informação</p>
+
+</div>
+
+</section>
+
+<!-- ===========================
+PARTE 3 CONTINUA DAQUI
+=========================== --><!-- ===========================
+MAIS LIDAS
+=========================== -->
+
+<section class="mais-lidas">
+
+<div class="titulo-secao">
+
+<span>EM ALTA</span>
+
+<h2>Mais Lidas</h2>
+
+<p>As notícias mais acessadas pelos nossos leitores.</p>
+
+</div>
+
+<div class="cards-lidas">
+
+<div class="mini-card esquerda">
+
+<div class="numero">01</div>
+
+<div>
+
+<h3>Literart reúne centenas de estudantes.</h3>
+
+<p>Mais de 5.000 visualizações.</p>
+
+</div>
+
+</div>
+
+<div class="mini-card direita">
+
+<div class="numero">02</div>
+
+<div>
+
+<h3>Visita à Agrotins movimenta alunos.</h3>
+
+<p>Mais de 4.300 visualizações.</p>
+
+</div>
+
+</div>
+
+<div class="mini-card esquerda">
+
+<div class="numero">03</div>
+
+<div>
+
+<h3>Aprova Brasil apresenta novos resultados.</h3>
+
+<p>Mais de 3.900 visualizações.</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===========================
+GALERIA
+=========================== -->
+
+<section class="galeria">
+
+<div class="titulo-secao">
+
+<span>GALERIA</span>
+
+<h2>Momentos da Escola</h2>
+
+<p>Confira alguns registros das atividades escolares.</p>
+
+</div>
+
+<div class="grid-galeria">
+
+<img src="https://i.ibb.co/wN4r2MhN/Captura-de-tela-2026-06-16-220647.png" loading="lazy">
+
+<img src="https://i.ibb.co/wN4r2MhN/Captura-de-tela-2026-06-16-220647.png" loading="lazy">
+
+<img src="https://i.ibb.co/wN4r2MhN/Captura-de-tela-2026-06-16-220647.png" loading="lazy">
+
+<img src="https://i.ibb.co/wN4r2MhN/Captura-de-tela-2026-06-16-220647.png" loading="lazy">
+
+<img src="https://i.ibb.co/wN4r2MhN/Captura-de-tela-2026-06-16-220647.png" loading="lazy">
+
+<img src="https://i.ibb.co/wN4r2MhN/Captura-de-tela-2026-06-16-220647.png" loading="lazy">
+
+</div>
+
+</section>
+
+<!-- ===========================
+NEWSLETTER
+=========================== -->
+
+<section class="newsletter">
+
+<div class="newsletter-box">
+
+<h2>Receba as notícias primeiro.</h2>
+
+<p>
+
+Cadastre seu e-mail e fique por dentro de todas as novidades do Jornal GM.
+
+</p>
+
+<div class="form-news">
+
+<input type="email"
+
+placeholder="Digite seu e-mail">
+
+<button>
+
+Inscrever-se
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===========================
+RODAPÉ
+=========================== -->
+
+<footer>
+
+<div class="footer-grid">
+
+<div>
+
+<h2>Jornal GM</h2>
+
+<p>
+
+Portal de notícias da comunidade escolar.
+
+Informando com qualidade desde 2026.
+
+</p>
+
+</div>
+
+<div>
+
+<h3>Menu</h3>
+
+<ul>
+
+<li><a href="#">Início</a></li>
+
+<li><a href="#">Eventos</a></li>
+
+<li><a href="#">Esportes</a></li>
+
+<li><a href="#">Artigos</a></li>
+
+<li><a href="#">Contato</a></li>
+
+</ul>
+
+</div>
+
+<div>
+
+<h3>Contato</h3>
+
+<p>
+
+📧 contato@jornalgm.com
+
+</p>
+
+<p>
+
+📱 (63) 99999-9999
+
+</p>
+
+</div>
+
+<div>
+
+<h3>Redes Sociais</h3>
+
+<div class="redes">
+
+<a href="#"><i class="fab fa-facebook"></i></a>
+
+<a href="#"><i class="fab fa-instagram"></i></a>
+
+<a href="#"><i class="fab fa-youtube"></i></a>
+
+<a href="#"><i class="fab fa-whatsapp"></i></a>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="copyright">
+
+© 2026 Jornal GM • Todos os direitos reservados.
+
+</div>
+
+</footer>
+
+<!-- BOTÃO TOPO -->
+
+<button id="topo">
+
+<i class="fas fa-arrow-up"></i>
+
+</button>
+
+<!-- BARRA DE PROGRESSO -->
+
+<div id="progresso"></div>
+
+<script src="js/script.js"></script>
+
+</body>
+
+</html>
