@@ -9,21 +9,25 @@ SCRIPT.JS - PARTE 1
 HEADER
 =========================*/
 
-const header = document.getElementById("header");
+const header = document.querySelector("#header") || document.querySelector("header");
 
-window.addEventListener("scroll", () => {
+if(header){
 
-    if(window.scrollY > 80){
+    window.addEventListener("scroll", () => {
 
-        header.classList.add("ativo");
+        if(window.scrollY > 80){
 
-    }else{
+            header.classList.add("ativo");
 
-        header.classList.remove("ativo");
+        }else{
 
-    }
+            header.classList.remove("ativo");
 
-});
+        }
+
+    });
+
+}
 
 
 /*=========================
@@ -32,6 +36,15 @@ MENU MOBILE
 
 const menuBtn = document.querySelector(".menu-mobile");
 const menu = document.querySelector("nav");
+
+function atualizarAlturaMobile(){
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
+atualizarAlturaMobile();
+window.addEventListener("resize", atualizarAlturaMobile);
+window.addEventListener("orientationchange", atualizarAlturaMobile);
 
 if(menuBtn && menu){
 
@@ -49,64 +62,67 @@ const indicadores = document.querySelectorAll(".indicadores span");
 
 let slideAtual = 0;
 
-function mostrarSlide(indice){
+if(slides.length > 0 && indicadores.length > 0){
 
-    slides.forEach((slide)=>{
+    function mostrarSlide(indice){
 
-        slide.classList.remove("ativo");
+        slides.forEach((slide)=>{
 
-    });
+            slide.classList.remove("ativo");
 
-    indicadores.forEach((bolinha)=>{
+        });
 
-        bolinha.classList.remove("ativo");
+        indicadores.forEach((bolinha)=>{
 
-    });
+            bolinha.classList.remove("ativo");
 
-    slides[indice].classList.add("ativo");
-    indicadores[indice].classList.add("ativo");
+        });
 
-}
-
-function proximoSlide(){
-
-    slideAtual++;
-
-    if(slideAtual >= slides.length){
-
-        slideAtual = 0;
+        slides[indice].classList.add("ativo");
+        indicadores[indice].classList.add("ativo");
 
     }
 
-    mostrarSlide(slideAtual);
+    function proximoSlide(){
 
-}
+        slideAtual++;
 
-setInterval(proximoSlide,5000);
+        if(slideAtual >= slides.length){
 
+            slideAtual = 0;
 
-/*=========================
-CLIQUE NOS INDICADORES
-=========================*/
-
-indicadores.forEach((item,index)=>{
-
-    item.addEventListener("click",()=>{
-
-        slideAtual = index;
+        }
 
         mostrarSlide(slideAtual);
 
+    }
+
+    setInterval(proximoSlide,5000);
+
+    /*=========================
+    CLIQUE NOS INDICADORES
+    =========================*/
+
+    indicadores.forEach((item,index)=>{
+
+        item.addEventListener("click",()=>{
+
+            slideAtual = index;
+
+            mostrarSlide(slideAtual);
+
+        });
+
     });
 
-});
+}
 
 
 /*=========================
 EFEITO NOS BOTÕES
 =========================*/
 
-const botoes = document.querySelectorAll(".btn");
+const botoes = document.querySelectorAll(".btn, .botao");
 
 botoes.forEach((botao)=>{
 
@@ -181,6 +197,8 @@ function revelarElementos(){
 }
 
 window.addEventListener("scroll", revelarElementos);
+window.addEventListener("load", revelarElementos);
+window.addEventListener("resize", revelarElementos);
 
 revelarElementos();
 
@@ -192,35 +210,39 @@ BOTÃO VOLTAR AO TOPO
 
 const botaoTopo = document.getElementById("topo");
 
-window.addEventListener("scroll",()=>{
+if(botaoTopo){
 
-    if(window.scrollY > 400){
+    window.addEventListener("scroll",()=>{
 
-        botaoTopo.style.display="flex";
+        if(window.scrollY > 400){
 
-        botaoTopo.style.alignItems="center";
+            botaoTopo.style.display="flex";
 
-        botaoTopo.style.justifyContent="center";
+            botaoTopo.style.alignItems="center";
 
-    }else{
+            botaoTopo.style.justifyContent="center";
 
-        botaoTopo.style.display="none";
+        }else{
 
-    }
+            botaoTopo.style.display="none";
 
-});
-
-botaoTopo.addEventListener("click",()=>{
-
-    window.scrollTo({
-
-        top:0,
-
-        behavior:"smooth"
+        }
 
     });
 
-});
+    botaoTopo.addEventListener("click",()=>{
+
+        window.scrollTo({
+
+            top:0,
+
+            behavior:"smooth"
+
+        });
+
+    });
+
+}
 
 
 
@@ -230,18 +252,22 @@ BARRA DE PROGRESSO
 
 const barra = document.getElementById("progresso");
 
-window.addEventListener("scroll",()=>{
+if(barra){
 
-    const alturaDocumento =
-    document.documentElement.scrollHeight -
-    document.documentElement.clientHeight;
+    window.addEventListener("scroll",()=>{
 
-    const porcentagem =
-    (window.scrollY / alturaDocumento) * 100;
+        const alturaDocumento =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
 
-    barra.style.width = porcentagem + "%";
+        const porcentagem =
+        (window.scrollY / alturaDocumento) * 100;
 
-});
+        barra.style.width = porcentagem + "%";
+
+    });
+
+}
 
 
 
@@ -358,31 +384,36 @@ Pesquisa + Modo Escuro
 MODO ESCURO
 =========================*/
 
-const botaoDark = document.querySelector(".dark-mode");
+const darkModeButtons = document.querySelectorAll(".dark-mode");
 
-if(botaoDark){
+function atualizarIconesDarkMode(escuro){
 
-    botaoDark.addEventListener("click",()=>{
+    darkModeButtons.forEach((botao)=>{
 
-        document.body.classList.toggle("dark");
+        const icone = botao.querySelector("i");
 
-        const icone = botaoDark.querySelector("i");
+        if(!icone) return;
 
-        if(document.body.classList.contains("dark")){
+        icone.classList.toggle("fa-moon", !escuro);
+        icone.classList.toggle("fa-sun", escuro);
 
-            icone.classList.remove("fa-moon");
-            icone.classList.add("fa-sun");
+    });
 
-            localStorage.setItem("tema","escuro");
+}
 
-        }else{
+if(darkModeButtons.length > 0){
 
-            icone.classList.remove("fa-sun");
-            icone.classList.add("fa-moon");
+    darkModeButtons.forEach((botaoDark)=>{
 
-            localStorage.setItem("tema","claro");
+        botaoDark.addEventListener("click",()=>{
 
-        }
+            const modoEscuro = document.body.classList.toggle("dark");
+
+            atualizarIconesDarkMode(modoEscuro);
+
+            localStorage.setItem("tema", modoEscuro ? "escuro" : "claro");
+
+        });
 
     });
 
@@ -394,14 +425,11 @@ window.addEventListener("load",()=>{
 
         document.body.classList.add("dark");
 
-        const icone=document.querySelector(".dark-mode i");
+        atualizarIconesDarkMode(true);
 
-        if(icone){
+    }else{
 
-            icone.classList.remove("fa-moon");
-            icone.classList.add("fa-sun");
-
-        }
+        atualizarIconesDarkMode(false);
 
     }
 
@@ -428,7 +456,7 @@ pesquisa.addEventListener("keyup",()=>{
 
         if(titulo.includes(texto)){
 
-            card.style.display="block";
+            card.style.display="";
 
         }else{
 
@@ -439,6 +467,18 @@ pesquisa.addEventListener("keyup",()=>{
     });
 
 });
+
+const botaoPesquisa = document.querySelector(".pesquisa button");
+
+if(botaoPesquisa){
+
+    botaoPesquisa.addEventListener("click",()=>{
+
+        pesquisa.dispatchEvent(new Event("keyup"));
+
+    });
+
+}
 
 }
 
@@ -470,9 +510,9 @@ links.forEach((link)=>{
 EFEITO NOS CARDS
 =========================*/
 
-const cards = document.querySelectorAll(".card");
+const cardsTilt = document.querySelectorAll(".card");
 
-cards.forEach((card)=>{
+cardsTilt.forEach((card)=>{
 
     card.addEventListener("mousemove",(e)=>{
 
@@ -504,9 +544,9 @@ cards.forEach((card)=>{
 EFEITO NAS IMAGENS
 =========================*/
 
-const imagens = document.querySelectorAll(".grid-galeria img");
+const imagensGaleria = document.querySelectorAll(".grid-galeria img");
 
-imagens.forEach((img)=>{
+imagensGaleria.forEach((img)=>{
 
     img.addEventListener("mouseenter",()=>{
 
@@ -527,9 +567,9 @@ imagens.forEach((img)=>{
 BOTÕES
 =========================*/
 
-const botoes = document.querySelectorAll("button,.btn");
+const botoesAnimacao = document.querySelectorAll("button,.btn");
 
-botoes.forEach((botao)=>{
+botoesAnimacao.forEach((botao)=>{
 
     botao.addEventListener("mouseenter",()=>{
 
@@ -624,13 +664,22 @@ FECHAR MENU AO CLICAR
 
 document.querySelectorAll("nav a").forEach(link=>{
 
-link.addEventListener("click",()=>{
+    link.addEventListener("click",()=>{
 
-    menuNav.classList.remove("ativo");
+        if(menuNav && window.innerWidth <= 992){
 
-    menuNav.style.right="-100%";
+            menuNav.classList.remove("ativo");
 
-});
+            menuNav.style.right="-100%";
+
+            if(menuMobile){
+                menuMobile.classList.remove("ativo");
+                menuMobile.setAttribute("aria-expanded", "false");
+            }
+
+        }
+
+    });
 
 });
 
@@ -644,55 +693,76 @@ const campoPesquisa = document.getElementById("pesquisa");
 
 if(campoPesquisa){
 
-campoPesquisa.addEventListener("keyup",()=>{
+    campoPesquisa.addEventListener("keyup",()=>{
 
-const cards = document.querySelectorAll(".card,.noticia");
+        const cards = document.querySelectorAll(".card,.noticia");
 
-let encontrados = 0;
+        let encontrados = 0;
 
-cards.forEach(card=>{
+        cards.forEach(card=>{
 
-const texto = card.innerText.toLowerCase();
+            const texto = card.innerText.toLowerCase();
 
-if(texto.includes(campoPesquisa.value.toLowerCase())){
+            if(texto.includes(campoPesquisa.value.toLowerCase())){
 
-card.style.display="";
+                card.style.display="";
 
-encontrados++;
+                encontrados++;
 
-}else{
+            }else{
 
-card.style.display="none";
+                card.style.display="none";
+
+            }
+
+        });
+
+        let aviso=document.getElementById("semResultado");
+
+        if(!aviso){
+
+            aviso=document.createElement("h2");
+
+            aviso.id="semResultado";
+
+            aviso.style.textAlign="center";
+
+            aviso.style.margin="50px";
+
+            aviso.style.color="#999";
+
+            aviso.innerHTML="Nenhuma notícia encontrada.";
+
+            document.body.appendChild(aviso);
+
+        }
+
+        aviso.style.display=(encontrados===0)?"block":"none";
+
+    });
 
 }
+
+const curtirBotoes = document.querySelectorAll(".curtir");
+
+curtirBotoes.forEach((botao)=>{
+
+    botao.addEventListener("click",()=>{
+
+        botao.classList.toggle("ativo");
+
+        const icone = botao.querySelector("i");
+
+        if(icone){
+
+            icone.classList.toggle("fa-regular");
+            icone.classList.toggle("fa-solid");
+
+        }
+
+    });
 
 });
-
-let aviso=document.getElementById("semResultado");
-
-if(!aviso){
-
-aviso=document.createElement("h2");
-
-aviso.id="semResultado";
-
-aviso.style.textAlign="center";
-
-aviso.style.margin="50px";
-
-aviso.style.color="#999";
-
-aviso.innerHTML="Nenhuma notícia encontrada.";
-
-document.body.appendChild(aviso);
-
-}
-
-aviso.style.display=(encontrados===0)?"block":"none";
-
-});
-
-}
 
 
 /*=========================
@@ -785,31 +855,31 @@ ano.innerHTML=new Date().getFullYear();
 ANIMAÇÃO BOTÕES
 =========================*/
 
-document.querySelectorAll("button,.btn").forEach(btn=>{
+document.querySelectorAll("button, .btn, .botao").forEach(btn=>{
 
-btn.addEventListener("mousedown",()=>{
+    btn.addEventListener("mousedown",()=>{
 
-btn.style.transform="scale(.95)";
+        btn.style.transform="scale(.95)";
 
-});
+    });
 
-btn.addEventListener("mouseup",()=>{
+    btn.addEventListener("mouseup",()=>{
 
-btn.style.transform="scale(1)";
+        btn.style.transform="scale(1)";
 
-});
+    });
 
-btn.addEventListener("touchstart",()=>{
+    btn.addEventListener("touchstart",()=>{
 
-btn.style.transform="scale(.95)";
+        btn.style.transform="scale(.95)";
 
-},{passive:true});
+    },{passive:true});
 
-btn.addEventListener("touchend",()=>{
+    btn.addEventListener("touchend",()=>{
 
-btn.style.transform="scale(1)";
+        btn.style.transform="scale(1)";
 
-});
+    });
 
 });
 
@@ -840,3 +910,5 @@ console.log("%cJornal GM 2026",
 
 console.log("%cSite desenvolvido em HTML CSS JavaScript",
 "color:#555;font-size:15px;");
+
+

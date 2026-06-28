@@ -7,7 +7,23 @@
 /*=========================
 RESET
 =========================*/
+img{
+    max-width:100%;
+    height:auto;
+    display:block;
+}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
+html, body{
+    width:100%;
+    min-height:100%;
+    height:100%;
+    overflow-x:hidden;
+}
 *{
     margin:0;
     padding:0;
@@ -22,9 +38,11 @@ body{
 
     font-family:'Poppins',sans-serif;
 
-    background:#f4f6fb;
+    background:#222;
 
     color:#222;
+
+    min-height:calc(var(--vh, 1vh) * 100);
 
     overflow-x:hidden;
 
@@ -51,7 +69,7 @@ CORES
     --preto:#111111;
     --cinza:#5b5b5b;
     --branco:#ffffff;
-    --fundo:#f4f6fb;
+    --fundo:#222;
 
 }
 
@@ -437,7 +455,7 @@ display:none;
 
     width:100%;
 
-    height:100vh;
+    height:calc(var(--vh, 1vh) * 100);
 
     overflow:hidden;
 
@@ -875,7 +893,9 @@ DESTAQUES
 
     transition:.4s;
 
-    opacity:0;
+    opacity:1;
+
+    transform:translateX(0);
 
 }
 
@@ -896,6 +916,19 @@ DESTAQUES
 .card.direita{
 
     transform:translateX(120px);
+
+}
+
+.card.esquerda,
+.card.direita,
+.noticia.esquerda,
+.noticia.direita,
+.mini-card.esquerda,
+.mini-card.direita{
+
+    opacity:1;
+
+    transform:translateX(0);
 
 }
 
@@ -1071,21 +1104,11 @@ BOTÃO LER
 
     box-shadow:0 12px 30px rgba(0,0,0,.08);
 
-    transition:.4s;
+    transition:opacity 1s ease, transform 1s ease, box-shadow .4s ease;
 
-    opacity:0;
+    opacity:1;
 
-}
-
-.noticia.esquerda{
-
-    transform:translateX(-120px);
-
-}
-
-.noticia.direita{
-
-    transform:translateX(120px);
+    transform:translateX(0);
 
 }
 
@@ -1095,7 +1118,7 @@ BOTÃO LER
 
     transform:translateX(0);
 
-    transition:1s;
+    transition:opacity 1s ease, transform 1s ease;
 
 }
 
@@ -1209,7 +1232,7 @@ BANNER CENTRAL
 
     height:450px;
 
-    background:url("img/banner/banner-central.jpg") center/cover;
+    background:url("https://i.ibb.co/B2XfFgdS/Captura-de-tela-2026-06-27-152629.png") center/cover;
 
     display:flex;
 
@@ -1385,17 +1408,9 @@ MAIS LIDAS
 
     transition:.35s;
 
-    opacity:0;
-
-}
-
-.mini-card.ativo{
-
     opacity:1;
 
     transform:translateX(0);
-
-    transition:1s;
 
 }
 
@@ -1824,7 +1839,7 @@ right:-100%;
 
 width:min(85vw, 320px);
 
-height:100vh;
+height:calc(var(--vh, 1vh) * 100);
 
 background:rgba(17,17,17,.98);
 
@@ -1876,9 +1891,9 @@ align-items:center;
 
 .hero{
 
-height:90vh;
+height:calc(var(--vh, 1vh) * 100);
 
-min-height:620px;
+min-height:auto;
 
 }
 
@@ -1946,9 +1961,9 @@ padding:12px 4%;
 
 .hero{
 
-height:80vh;
+height:calc(var(--vh, 1vh) * 100);
 
-min-height:560px;
+min-height:auto;
 
 }
 
@@ -2122,8 +2137,6 @@ nav a:active,
 .social a:active{
 
 transform:scale(.97);
-
-}
 
 }
 
@@ -2301,8 +2314,83 @@ background:#d90429;
 
 color:white;
 
+}.dark-mode{
+
+width:45px;
+height:45px;
+
+border:none;
+
+border-radius:50%;
+
+background:#1e88e5;
+
+color:white;
+
+font-size:20px;
+
+cursor:pointer;
+
+transition:.3s;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
 }
 
-/*==================================================
-FIM DO CSS
-==================================================*/
+.dark-mode:hover{
+
+transform:rotate(180deg);
+
+background:#1565c0;
+
+}/*=========================
+MODO ESCURO
+=========================*/
+
+body.dark{
+    background:#0f0f0f;
+    color:white;
+}
+
+body.dark header{
+    background:#111;
+}
+
+body.dark .topbar{
+    background:#000;
+}
+
+body.dark .categorias,
+body.dark .destaques,
+body.dark .ultimas-noticias,
+body.dark .galeria,
+body.dark .mais-lidas{
+    background:#181818;
+}
+
+body.dark .card,
+body.dark .mini-card,
+body.dark .noticia,
+body.dark .categoria-card{
+    background:#242424;
+    color:white;
+}
+
+body.dark h1,
+body.dark h2,
+body.dark h3{
+    color:white;
+}
+
+body.dark p{
+    color:#d0d0d0;
+}
+
+body.dark footer{
+    background:#0a0a0a;
+}
+}

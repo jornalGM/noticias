@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notícia | Jornal GM</title>
+
+    <link rel="stylesheet" href="noticias.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        Jornal <span>GM</span>
+    </div>
+
+</header>
+
+<section class="container">
+
+    <div class="card">
+
+        <div class="imagem">
+
+            <img src="https://i.ibb.co/5Wp0jqtb/Captura-de-tela-2026-06-28-111905.png">
+            <div class="categoria">
+                DESTAQUE
+            </div>
+
+        </div>
+
+        <div class="conteudo">
+
+         <h1>
+Quem é "Glô"? A mulher que inspirou este jornal
+</h1>
+
+<div class="informacoes">
+    <span>📅 28 de Junho de 2026</span>
+    <span>👤 Allana Nery</span>
+</div>
+
+<p>
+Conheça a trajetória de Glória Maria Matta da Silva, jornalista que inspirou
+a criação do Jornal Glória Maria e se tornou um dos maiores símbolos do
+jornalismo brasileiro.
+</p>
+
+            <button id="btnLer"> 
+                Ler Matéria Completa
+            </button>
+          
+        </div>
+
+    </div>
+
+</section>
+
+<div class="modal" id="modal">
+
+   <div class="modal" id="modal">
+
+    <div class="janela">
+
+        <span class="fechar">&times;</span>
+
+        <h2>Quem é "Glô"? A mulher que inspirou este jornal</h2>
+
+        <p>
+
+<b>Glória Maria Matta da Silva</b> nasceu em 15 de agosto de 1949, no Rio de Janeiro.
+Conhecida nacionalmente como Glória Maria, teve uma infância simples,
+estudou em escolas públicas e desde cedo se destacou pela inteligência e
+facilidade com a escrita.
+
+<br><br>
+
+Ainda adolescente, já dominava inglês e francês, além de possuir conhecimentos
+de latim. Aos 16 anos começou a trabalhar como telefonista na Companhia
+Telefônica Brasileira e, aos 18 anos, ingressou no curso de Jornalismo da
+Pontifícia Universidade Católica do Rio de Janeiro (PUC-Rio).
+
+<br><br>
+
+Em 1970 iniciou sua trajetória na Rede Globo, tornando-se uma das maiores
+jornalistas da televisão brasileira. Apresentou o RJTV, Jornal Hoje,
+Fantástico e Globo Repórter, além de realizar reportagens em mais de
+160 países.
+
+<br><br>
+
+Sua carreira foi marcada por entrevistas históricas, como as realizadas com
+Freddie Mercury durante o Rock in Rio de 1985 e Michael Jackson nas gravações
+do clipe <i>They Don't Care About Us</i>, em 1996.
+
+<br><br>
+
+Também cobriu acontecimentos marcantes como a Guerra das Malvinas,
+os Jogos Olímpicos de Atlanta e a Copa do Mundo de 1998.
+
+<br><br>
+
+Após seu falecimento, em 2 de fevereiro de 2023, aos 73 anos,
+o Clube de Jornalismo do Colégio Estadual Professora Elizângela Glória Cardoso
+decidiu homenageá-la criando o <b>Jornal Glória Maria</b>, conhecido carinhosamente
+como <b>"Glô"</b>.
+
+<br><br>
+
+A homenagem busca manter vivo o legado de uma das primeiras mulheres negras
+a conquistar destaque no jornalismo televisivo brasileiro, tornando-se símbolo
+de coragem, dedicação, profissionalismo e compromisso com a informação.
+
+<br><br>
+
+Hoje, sua história continua inspirando novas gerações de jornalistas,
+mostrando que a educação, a perseverança e a paixão pela profissão podem
+transformar vidas.
+
+<br><br>
+
+<blockquote style="border-left:4px solid #c40000;padding-left:15px;font-style:italic;color:#555;">
+"Não tem posicionamento maior do que ser quem eu sou."
+<br>
+— Glória Maria
+</blockquote>
+
+<br>
+
+<div style="text-align:right;font-weight:600;">
+— Allana Nery
+</div>
+
+        </p>
+
+    </div>
+
+</div>
+
+<script src="noticias.js"></script>
+
+</body>
+
+</html>
+<STYle>*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f3f5f7;
+    color:#222;
+}
+
+/* HEADER */
+
+header{
+    width:100%;
+    background:#c40000;
+    color:#fff;
+    padding:18px 8%;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+.logo{
+    font-size:30px;
+    font-weight:700;
+}
+
+.logo span{
+    color:#ffd700;
+}
+
+/* CONTAINER */
+
+.container{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:50px 20px;
+}
+
+/* CARD */
+
+.card{
+    max-width:1000px;
+    width:100%;
+    background:#fff;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 15px 40px rgba(0,0,0,.15);
+    animation:entrada 1s ease;
+    transition:.4s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 25px 50px rgba(0,0,0,.25);
+}
+
+/* IMAGEM */
+
+.imagem{
+    position:relative;
+}
+
+.imagem img{
+    width:100%;
+    height:480px;
+    object-fit:cover;
+    display:block;
+}
+
+/* CATEGORIA */
+
+.categoria{
+    position:absolute;
+    top:20px;
+    left:20px;
+    background:#c40000;
+    color:#fff;
+    padding:8px 18px;
+    border-radius:30px;
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:1px;
+}
+
+/* CONTEÚDO */
+
+.conteudo{
+    padding:35px;
+}
+
+.conteudo h1{
+    font-size:36px;
+    margin-bottom:20px;
+    color:#111;
+}
+
+.informacoes{
+    display:flex;
+    gap:25px;
+    color:#777;
+    margin-bottom:25px;
+    flex-wrap:wrap;
+    font-size:15px;
+}
+
+.conteudo p{
+    line-height:1.9;
+    font-size:18px;
+    color:#444;
+    text-align:justify;
+}
+
+/* BOTÃO */
+
+#btnLer{
+    margin-top:35px;
+    background:#c40000;
+    color:#fff;
+    border:none;
+    padding:15px 35px;
+    border-radius:50px;
+    cursor:pointer;
+    font-size:17px;
+    font-weight:600;
+    transition:.3s;
+}
+
+#btnLer:hover{
+    background:#900000;
+    transform:scale(1.05);
+}
+
+/* MODAL */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.6);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    opacity:0;
+    visibility:hidden;
+    transition:.4s;
+    padding:20px;
+}
+
+.modal.ativo{
+    opacity:1;
+    visibility:visible;
+}
+
+.janela{
+    background:#fff;
+    width:700px;
+    max-width:100%;
+    border-radius:20px;
+    padding:35px;
+    position:relative;
+    animation:zoom .5s;
+}
+
+.janela h2{
+    margin-bottom:20px;
+    color:#c40000;
+}
+
+.janela p{
+    line-height:1.8;
+    color:#444;
+}
+
+.fechar{
+    position:absolute;
+    top:15px;
+    right:20px;
+    font-size:35px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.fechar:hover{
+    color:#c40000;
+}
+
+/* ANIMAÇÕES */
+
+@keyframes entrada{
+
+    from{
+        opacity:0;
+        transform:translateY(80px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+@keyframes zoom{
+
+    from{
+        transform:scale(.8);
+        opacity:0;
+    }
+
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+
+}
+
+/* RESPONSIVO */
+
+@media(max-width:768px){
+
+    .conteudo{
+        padding:25px;
+    }
+
+    .conteudo h1{
+        font-size:28px;
+    }
+
+    .conteudo p{
+        font-size:16px;
+    }
+
+    .imagem img{
+        height:260px;
+    }
+
+    #btnLer{
+        width:100%;
+    }
+
+}</STYle>
+<script>// Elementos
+const btnLer = document.getElementById("btnLer");
+const modal = document.getElementById("modal");
+const fechar = document.querySelector(".fechar");
+
+// Abrir modal
+btnLer.addEventListener("click", () => {
+    modal.classList.add("ativo");
+    document.body.style.overflow = "hidden";
+});
+
+// Fechar pelo X
+fechar.addEventListener("click", fecharModal);
+
+// Fechar clicando fora da janela
+modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+        fecharModal();
+    }
+});
+
+// Fechar com ESC
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal.classList.contains("ativo")) {
+        fecharModal();
+    }
+});
+
+// Função para fechar
+function fecharModal() {
+    modal.classList.remove("ativo");
+    document.body.style.overflow = "auto";
+    window.location.href = "glô2.html";
+}</script>
