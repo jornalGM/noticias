@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Esquenta do GIPE</title>
+
+<link rel="stylesheet" href="esquenta-gipe.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<header>
+
+<div class="topo">
+
+<h1>Jornal GM</h1>
+
+<a href="index.html" class="voltar">
+<i class="fa-solid fa-arrow-left"></i> Voltar
+</a>
+
+</div>
+
+</header>
+
+<section class="banner">
+
+<img src="https://i.ibb.co/Rp6Rw9Lw/Whats-App-Image-2026-06-29-at-18-07-25.jpg" alt="Esquenta do GIPE">
+
+<div class="overlay">
+
+<h2>Esquenta do GIPE reúne estudantes em clima de agitação e rivalidade</h2>
+
+<p>
+
+Esportes, diversão e muita energia marcaram o evento preparatório para o GIPE.
+
+</p>
+
+</div>
+
+</section>
+
+<main>
+
+<section class="noticia revelar">
+
+<h2>Um início cheio de animação</h2>
+
+<p>
+
+O Esquenta do GIPE proporcionou um momento especial de integração entre os estudantes, reunindo diferentes turmas em uma programação repleta de força de vontade, atividades física e muita animação.
+
+O evento serviu como preparação para o GIPE, fortalecendo o espírito de equipe e incentivando a participação de todos.
+
+</p>
+
+</section>
+
+<section class="galeria revelar">
+
+<img src="https://i.ibb.co/JFRXgZRN/Whats-App-Image-2026-06-28-at-22-54-47.jpg">
+
+<img src="https://i.ibb.co/RTN5SzJ4/Whats-App-Image-2026-06-28-at-22-54-46.jpg">
+
+<img src="https://i.ibb.co/LDVjXZQZ/Whats-App-Image-2026-06-29-at-17-31-36-2.jpg">
+
+</section>
+
+<section class="noticia revelar">
+
+<h2>Integração entre as turmas</h2>
+
+<p>
+
+Durante o evento, os estudantes participaram de dinâmicas, apresentações e momentos de confraternização, fortalecendo os laços de amizade e o sentimento de pertencimento à comunidade escolar.
+
+A programação destacou a importância da união, do respeito e da colaboração entre todos.
+
+</p>
+
+</section>
+
+<button id="btnMais">
+
+Ver mais
+
+</button>
+
+<div id="maisConteudo">
+
+<section class="noticia revelar">
+
+<h2>Preparação para o GIPE</h2>
+
+<p>
+
+Além de promover diversão, o Esquenta do GIPE despertou ainda mais o entusiasmo dos estudantes para a realização do evento principal.
+
+As atividades mostraram que aprender também pode acontecer por meio da convivência, da criatividade e do trabalho em equipe.
+
+</p>
+
+</section>
+
+<section class="noticia revelar">
+
+<h2>Um momento inesquecível</h2>
+
+<p>
+
+Com muita participação e alegria, o Esquenta do GIPE foi um sucesso, deixando grandes expectativas para as próximas atividades e fortalecendo o espírito de integração da escola.
+      E com a a poderosa equipe amarela saindo campeã do esquenta.
+</p>
+
+</section>
+
+</div>
+
+</main>
+
+<footer>
+
+<p>© 2026 Jornal GM - Todos os direitos reservados.</p>
+
+</footer>
+
+<script src="esquenta-gipe.js"></script>
+
+</body>
+
+</html>
+<style>/* ===================================
+   RESET
+=================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#fff8f3;
+    color:#333;
+    line-height:1.8;
+}
+
+/* ===================================
+   HEADER
+=================================== */
+
+header{
+    background:linear-gradient(90deg,#ff5722,#ff9800);
+    color:white;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 5px 18px rgba(0,0,0,.25);
+}
+
+.topo{
+    max-width:1200px;
+    margin:auto;
+    padding:18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.topo h1{
+    font-size:30px;
+    letter-spacing:1px;
+}
+
+.voltar{
+    text-decoration:none;
+    color:white;
+    background:#d84315;
+    padding:10px 18px;
+    border-radius:8px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.voltar:hover{
+    background:#bf360c;
+    transform:scale(1.05);
+}
+
+/* ===================================
+   BANNER
+=================================== */
+
+.banner{
+    position:relative;
+    height:500px;
+    overflow:hidden;
+}
+
+.banner img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    animation:zoomBanner 15s infinite alternate;
+}
+
+@keyframes zoomBanner{
+
+from{
+    transform:scale(1);
+}
+
+to{
+    transform:scale(1.08);
+}
+
+}
+
+.overlay{
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.45);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+.overlay h2{
+    font-size:46px;
+    margin-bottom:15px;
+    text-shadow:2px 2px 12px black;
+}
+
+.overlay p{
+    font-size:22px;
+    max-width:900px;
+}
+
+/* ===================================
+   CONTEÚDO
+=================================== */
+
+main{
+    max-width:1100px;
+    margin:50px auto;
+    padding:20px;
+}
+
+.noticia{
+    background:white;
+    border-left:8px solid #ff9800;
+    padding:35px;
+    margin-bottom:35px;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.noticia h2{
+    color:#e65100;
+    margin-bottom:15px;
+    font-size:30px;
+}
+
+.noticia p{
+    font-size:19px;
+    text-align:justify;
+}
+
+/* ===================================
+   GALERIA
+=================================== */
+
+.galeria{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+    margin-bottom:40px;
+}
+
+.galeria img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+    border-radius:12px;
+    cursor:pointer;
+    transition:.4s;
+    box-shadow:0 6px 18px rgba(0,0,0,.18);
+}
+
+.galeria img:hover{
+    transform:scale(1.06) rotate(1deg);
+}
+
+/* ===================================
+   BOTÃO
+=================================== */
+
+#btnMais{
+    display:block;
+    margin:40px auto;
+    padding:15px 35px;
+    border:none;
+    border-radius:10px;
+    background:#ff5722;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+#btnMais:hover{
+    background:#e64a19;
+    transform:scale(1.05);
+}
+
+#maisConteudo{
+    display:none;
+}
+
+/* ===================================
+   ANIMAÇÕES
+=================================== */
+
+.revelar{
+    opacity:0;
+    transform:translateY(70px);
+    transition:1s;
+}
+
+.revelar.ativo{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* ===================================
+   FOOTER
+=================================== */
+
+footer{
+    background:linear-gradient(90deg,#ff5722,#ff9800);
+    color:white;
+    text-align:center;
+    padding:25px;
+    margin-top:50px;
+}
+
+/* ===================================
+   RESPONSIVO
+=================================== */
+
+@media(max-width:768px){
+
+.banner{
+    height:320px;
+}
+
+.overlay h2{
+    font-size:30px;
+}
+
+.overlay p{
+    font-size:17px;
+}
+
+.topo{
+    flex-direction:column;
+    gap:15px;
+}
+
+.noticia{
+    padding:25px;
+}
+
+.noticia h2{
+    font-size:24px;
+}
+
+.noticia p{
+    font-size:17px;
+}
+
+.galeria img{
+    height:220px;
+}
+
+}</style>
+<script>// ==========================================
+// BOTÃO "VER MAIS"
+// ==========================================
+
+const btnMais = document.getElementById("btnMais");
+const maisConteudo = document.getElementById("maisConteudo");
+
+btnMais.addEventListener("click", () => {
+
+    if (maisConteudo.style.display === "block") {
+
+        maisConteudo.style.display = "none";
+        btnMais.innerHTML = "🔥 Ver mais";
+
+    } else {
+
+        maisConteudo.style.display = "block";
+        btnMais.innerHTML = "🔥 Ver menos";
+
+        maisConteudo.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+    }
+
+});
+
+// ==========================================
+// ANIMAÇÃO DAS NOTÍCIAS
+// ==========================================
+
+const elementos = document.querySelectorAll(".revelar");
+
+function revelarNoticias() {
+
+    const alturaTela = window.innerHeight;
+
+    elementos.forEach((elemento) => {
+
+        const topo = elemento.getBoundingClientRect().top;
+
+        if (topo < alturaTela - 120) {
+            elemento.classList.add("ativo");
+        }
+
+    });
+
+}
+
+window.addEventListener("scroll", revelarNoticias);
+window.addEventListener("load", revelarNoticias);
+
+// ==========================================
+// EFEITO NAS IMAGENS
+// ==========================================
+
+const imagens = document.querySelectorAll(".galeria img");
+
+imagens.forEach((img) => {
+
+    img.addEventListener("mouseenter", () => {
+
+        img.style.transform = "scale(1.08) rotate(2deg)";
+        img.style.transition = ".4s";
+
+    });
+
+    img.addEventListener("mouseleave", () => {
+
+        img.style.transform = "scale(1) rotate(0deg)";
+
+    });
+
+});
+
+// ==========================================
+// ANIMAÇÃO DO TÍTULO DO BANNER
+// ==========================================
+
+const titulo = document.querySelector(".overlay h2");
+
+window.addEventListener("load", () => {
+
+    titulo.animate(
+        [
+            {
+                opacity: 0,
+                transform: "translateY(-60px)"
+            },
+            {
+                opacity: 1,
+                transform: "translateY(0)"
+            }
+        ],
+        {
+            duration: 1200,
+            easing: "ease-out",
+            fill: "forwards"
+        }
+    );
+
+});
+
+// ==========================================
+// ANIMAÇÃO DO SUBTÍTULO
+// ==========================================
+
+const subtitulo = document.querySelector(".overlay p");
+
+window.addEventListener("load", () => {
+
+    subtitulo.animate(
+        [
+            {
+                opacity: 0,
+                transform: "translateY(40px)"
+            },
+            {
+                opacity: 1,
+                transform: "translateY(0)"
+            }
+        ],
+        {
+            duration: 1500,
+            delay: 300,
+            easing: "ease-out",
+            fill: "forwards"
+        }
+    );
+
+});
+
+// ==========================================
+// HEADER COM EFEITO AO ROLAR
+// ==========================================
+
+const header = document.querySelector("header");
+
+window.addEventListener("scroll", () => {
+
+    if (window.scrollY > 50) {
+
+        header.style.background = "linear-gradient(90deg, #e64a19, #fb8c00)";
+        header.style.boxShadow = "0 8px 22px rgba(0,0,0,.35)";
+
+    } else {
+
+        header.style.background = "linear-gradient(90deg, #ff5722, #ff9800)";
+        header.style.boxShadow = "0 5px 18px rgba(0,0,0,.25)";
+
+    }
+
+});
+
+// ==========================================
+// EFEITO NOS CARDS DAS NOTÍCIAS
+// ==========================================
+
+const cards = document.querySelectorAll(".noticia");
+
+cards.forEach((card) => {
+
+    card.addEventListener("mouseenter", () => {
+
+        card.style.transform = "translateY(-10px)";
+        card.style.transition = ".3s";
+        card.style.boxShadow = "0 15px 28px rgba(0,0,0,.18)";
+
+    });
+
+    card.addEventListener("mouseleave", () => {
+
+        card.style.transform = "translateY(0)";
+        card.style.boxShadow = "0 8px 20px rgba(0,0,0,.08)";
+
+    });
+
+});
+
+// ==========================================
+// ANIMAÇÃO NO BOTÃO
+// ==========================================
+
+setInterval(() => {
+
+    btnMais.animate(
+        [
+            { transform: "scale(1)" },
+            { transform: "scale(1.06)" },
+            { transform: "scale(1)" }
+        ],
+        {
+            duration: 900
+        }
+    );
+
+}, 4500);</script>
